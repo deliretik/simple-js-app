@@ -18,5 +18,5 @@ document.write(minSize); */
 alert('Hello world');
 
 let myfavoriteFood = tagine;
-document.write(myfavoriteFood);/* this is a comment */
+document.write(myfavoriteFood);
 
