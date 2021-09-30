@@ -1,14 +1,42 @@
-pokemonsList= [
+//forEach function
+let pokemonList = [
   {name:'Squirtle', type:'water', height:0.5},
   {name:'Wartortle', type:'water', height:1},
   {name:'Bulbasaur', type:['grass','poison'], height:0.7}
-  ]           
-           
-for( let i = 0; i < pokemonsList.length; i++){
-  if (pokemonsList[i].height >= 1) {
-    document.write('<ul><li>' + pokemonsList[i].name + ' ( Height: ' + pokemonsList[i].height + ' )' + ' Wow, that\’s big!' + '</li></ul>')
-  } else {
-    document.write('<ul><li>' + pokemonsList[i].name + ' ( Height: ' + pokemonsList[i].height + ' )' + '</li></ul>')
-  }
-    };
-          
+];
+pokemonList.forEach(function(pokemon){
+    document.write(pokemon.name + ': ' + '</br>' + 'Height: '+ pokemon.height + '</br>' + 'Type: ' + pokemon.type + '<br>' + '<br>')
+});
+
+//wrapping the array in a IIFE
+//creating a pokemonRepository and assigning it to pokemonlist
+    let pokemonRepository = (function () {
+      let pokemonList = [
+            {name:'Squirtle', type:'water', height:0.5},
+            {name:'Wartortle', type:'water', height:1},
+            {name:'Bulbasaur', type:['grass','poison'], height:0.7}
+    ];
+    
+      function add(pokemon) {
+        pokemonList.push(pokemon);
+      }
+    
+      function getAll() {
+        return pokemonList;
+      }
+    
+      return {
+        add: add,
+        getAll: getAll
+      };
+    })();
+
+    //test (+)
+    //console.log(pokemonRepository.getAll());
+    
+    //foreach function
+    pokemonRepository.getAll().forEach(function(pokemon){
+      document.write(pokemon.name + ': ' + '<br>' + 'height: ' + pokemon.height +  '<br>' + 'type: ' + pokemon.type + '<br>' + '<br>')
+    });
+    
+    
