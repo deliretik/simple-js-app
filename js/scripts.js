@@ -1,28 +1,16 @@
-//forEach function
-let pokemonList = [
-  {name:'Squirtle', type:'water', height:0.5},
-  {name:'Wartortle', type:'water', height:1},
-  {name:'Bulbasaur', type:['grass','poison'], height:0.7}
-];
-pokemonList.forEach(function(pokemon){
-    document.write(pokemon.name + ': ' + '</br>' + 'Height: '+ pokemon.height + '</br>' + 'Type: ' + pokemon.type + '<br>' + '<br>')
-});
-
-//wrapping the array in a IIFE
-//creating a pokemonRepository and assigning it to pokemonlist
     let pokemonRepository = (function () {
-      let pokemonList = [
+      let repository = [
             {name:'Squirtle', type:'water', height:0.5},
             {name:'Wartortle', type:'water', height:1},
             {name:'Bulbasaur', type:['grass','poison'], height:0.7}
     ];
     
       function add(pokemon) {
-        pokemonList.push(pokemon);
+        repository.push(pokemon);
       }
     
       function getAll() {
-        return pokemonList;
+        return repository;
       }
     
       return {
@@ -36,7 +24,13 @@ pokemonList.forEach(function(pokemon){
     
     //foreach function
     pokemonRepository.getAll().forEach(function(pokemon){
-      document.write(pokemon.name + ': ' + '<br>' + 'height: ' + pokemon.height +  '<br>' + 'type: ' + pokemon.type + '<br>' + '<br>')
+    let pokemonUnorderedList = document.querySelector('.pokemon-list');
+    let pokemonListItem = document.createElement('li');
+    let pokemonButton = document.createElement('button');
+      pokemonButton.innerText = pokemon.name;
+      pokemonButton.classList.add('button-class');
+      pokemonListItem.appendChild(pokemonButton);
+      pokemonUnorderedList.appendChild(pokemonListItem);
     });
     
     
