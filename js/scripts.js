@@ -12,25 +12,27 @@
       function getAll() {
         return repository;
       }
-    
+      
+      function addListItem(pokemon){
+        let pokemonUnorderedList = document.querySelector('.pokemon-list');
+        let pokemonListItem = document.createElement('li');
+        let pokemonButton = document.createElement('button');
+          pokemonButton.innerText = pokemon.name;
+          pokemonButton.classList.add('button-class');
+          pokemonListItem.appendChild(pokemonButton);
+          pokemonUnorderedList.appendChild(pokemonListItem);
+      }; 
       return {
         add: add,
-        getAll: getAll
+        getAll: getAll,
+        addListItem: addListItem
       };
     })();
-
-    //test (+)
-    //console.log(pokemonRepository.getAll());
     
     //foreach function
     pokemonRepository.getAll().forEach(function(pokemon){
-    let pokemonUnorderedList = document.querySelector('.pokemon-list');
-    let pokemonListItem = document.createElement('li');
-    let pokemonButton = document.createElement('button');
-      pokemonButton.innerText = pokemon.name;
-      pokemonButton.classList.add('button-class');
-      pokemonListItem.appendChild(pokemonButton);
-      pokemonUnorderedList.appendChild(pokemonListItem);
+      pokemonRepository.addListItem(pokemon);
     });
+    
     
     
